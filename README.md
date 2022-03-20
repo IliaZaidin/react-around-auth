@@ -1,8 +1,6 @@
-Around the U.S. project on React, featuring authorization and registration.
+# Project #5 in the course Creating an Interface with React.
+The objective is building a one page site using the following tools: React.JS.
 
-This repository will contain your own front-end project on React with added authorization and registration features.
-Start working with your previously built front end code from Sprint 11.
+Technologies used: React.JS
 
-All authorization, registration and token requests must go through to the server running on [https://register.nomoreparties.co](https://register.nomoreparties.co/).
-
-Good luck!
+Link to the site: https://iliazaidin.github.io/react-around-auth/
