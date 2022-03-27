@@ -18,7 +18,7 @@ function Header(props) {
   return (
     <header className="header">
       <img className="header__logo" src={logo} alt="header logo" />
-      
+
       {
         isLoggedIn &&
         <Menu

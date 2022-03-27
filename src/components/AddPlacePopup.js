@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import PopupWithForm from './PopupWithForm';
 import Input from './Input';
 
@@ -11,13 +11,17 @@ export default function AddPlacePopup(props) {
   const [cardTitle, setCardTitle] = useState('');
   const [cardLink, setCardLink] = useState('');
 
+  useEffect(() => {
+    setCardTitle('');
+    setCardLink('');
+  }, [isOpen]);
+
   function handleSubmit(event) {
     event.preventDefault();
     onAddPlaceSubmit({
       name: cardTitle,
       link: cardLink,
     });
-    event.target.reset();
   }
 
   function handleCardTitleChange(event) {
@@ -43,6 +47,7 @@ export default function AddPlacePopup(props) {
         type="title"
         placeholder="Title"
         onChange={handleCardTitleChange}
+        value={cardTitle}
       />
 
       <Input
@@ -50,6 +55,7 @@ export default function AddPlacePopup(props) {
         type="link"
         placeholder="Image link"
         onChange={handleCardLinkChange}
+        value={cardLink}
       />
 
     </PopupWithForm>

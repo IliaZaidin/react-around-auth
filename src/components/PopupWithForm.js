@@ -1,5 +1,3 @@
-import React
-  from "react";
 function PopupWithForm(props) {
   const {
     name,
@@ -20,7 +18,7 @@ function PopupWithForm(props) {
       <div className={`popup__wrapper popup__wrapper_type_${name}`} onMouseDown={preventBubbling} >
         <h2 className={`popup__title popup__title_type_${name}`}>{headerText}</h2>
         <button className={`popup__close popup__close_type_${name}`} onClick={onClose} type="button">&#10005;</button>
-        <form className={`form form_type_${name}`} onSubmit={onSubmit} noValidate >
+        <form className={`form form_type_${name}`} onSubmit={onSubmit} >
           {children}
           <button className={`form__submit form__submit_type_${name}`} type="submit">{buttonText}</button>
         </form>

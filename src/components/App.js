@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
@@ -16,7 +16,7 @@ import Register from './Register';
 import api from '../utils/api';
 import ProtectedRoute from './ProtectedRoute';
 import InfoTooltip from './InfoTooltip';
-import Menu from './Menu';
+// import Menu from './Menu';
 import auth from '../utils/auth';
 
 export default function App() {
@@ -37,6 +37,36 @@ export default function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
+
+  useEffect(() => {
+    auth.checkToken()
+      .then((response) => {
+        if (response.data.email) {
+          setLoggedIn(true);
+          setEmail(response.data.email);
+          history.push("/");
+        }
+      })
+      .catch((err) => {
+        console.log("Error: ", err.status, err.statusText);
+      });
+
+    api.getUserData()
+      .then(data => {
+        setCurrentUser(data);
+      })
+      .catch((err) => {
+        console.log("Error: ", err.status, err.statusText);
+      });
+
+    api.getCards()
+      .then(data => {
+        setCards(data);
+      })
+      .catch((err) => {
+        console.log("Error: ", err.status, err.statusText);
+      });
+  }, [])
 
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true);
@@ -175,6 +205,7 @@ export default function App() {
       })
       .catch((err) => {
         console.log("Error: ", err.status, err.statusText);
+        setRegistered(false);
       })
       .finally(() => {
         setTooltipOpen(true);
@@ -225,6 +256,8 @@ export default function App() {
           <Switch>
             <Route path="/signup">
               <Register
+                email={email}
+                password={password} 
                 handleRegister={handleRegister}
                 handleEmail={handleEmail}
                 handlePassword={handlePassword}
@@ -233,9 +266,11 @@ export default function App() {
 
             <Route path="/signin">
               <Login
+                email={email}
+                password={password}
                 setEmail={setEmail}
                 setLoggedIn={setLoggedIn}
-                handleLogin={handleLogin} 
+                handleLogin={handleLogin}
                 handleEmail={handleEmail}
                 handlePassword={handlePassword}
               />

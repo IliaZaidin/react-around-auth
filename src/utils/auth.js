@@ -4,6 +4,14 @@ class Auth {
     this._baseUrl = options.baseUrl;
   }
 
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    } else {
+      return Promise.reject(res);
+    }
+  }
+
   register(email, password) {
     return fetch(`${this._baseUrl}/signup`, {
       method: "POST",
@@ -15,13 +23,7 @@ class Auth {
         email: email
       }),
     })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          return Promise.reject(response);
-        }
-      })
+      .then(this._checkResponse)
   };
 
   login(email, password) {
@@ -35,13 +37,7 @@ class Auth {
         email: email
       }),
     })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          return Promise.reject(response);
-        }
-      })
+      .then(this._checkResponse)
   };
 
   checkToken() {
@@ -52,13 +48,7 @@ class Auth {
         "authorization": `Bearer ${localStorage.getItem('jwt')}`
       },
     })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          return Promise.reject(response);
-        }
-      })
+      .then(this._checkResponse)
   };
 }
 
