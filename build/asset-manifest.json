@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/around-react-auth/static/css/main.1bb4f3bb.css",
+    "main.js": "/around-react-auth/static/js/main.069f92c5.js",
+    "static/media/Inter-Medium.woff2": "/around-react-auth/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
+    "static/media/Inter-Black.woff2": "/around-react-auth/static/media/Inter-Black.15ca31c0a2a68f76d2d1.woff2",
+    "static/media/Inter-Regular.woff2": "/around-react-auth/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
+    "index.html": "/around-react-auth/index.html",
+    "main.1bb4f3bb.css.map": "/around-react-auth/static/css/main.1bb4f3bb.css.map",
+    "main.069f92c5.js.map": "/around-react-auth/static/js/main.069f92c5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1bb4f3bb.css",
+    "static/js/main.069f92c5.js"
+  ]
+}
