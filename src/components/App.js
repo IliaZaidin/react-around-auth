@@ -214,12 +214,6 @@ export default function App() {
     <div className="page" >
       <div className="page__wrapper" >
         <CurrentUserContext.Provider value={currentUser}>
-          <Menu
-            email={email}
-            isOpen={isMenuOpen}
-            isLoggedIn={isLoggedIn}
-            handleLogout={handleLogout}
-          />
           <Header
             email={email}
             isLoggedIn={isLoggedIn}
