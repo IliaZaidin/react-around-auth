@@ -1,4 +1,4 @@
-import React from 'react';
+import {useState} from 'react';
 import PopupWithForm from './PopupWithForm';
 import Input from './Input';
 
@@ -8,8 +8,8 @@ export default function AddPlacePopup(props) {
     onClose,
     onAddPlaceSubmit
   } = props;
-  const [cardTitle, setCardTitle] = React.useState('');
-  const [cardLink, setCardLink] = React.useState('');
+  const [cardTitle, setCardTitle] = useState('');
+  const [cardLink, setCardLink] = useState('');
 
   function handleSubmit(event) {
     event.preventDefault();

@@ -14,14 +14,24 @@ class Api {
 
   getUserData() {
     return fetch(`${this._url}/users/me`, {
-      headers: { authorization: this._token }
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        // "authorization": localStorage.getItem('jwt')
+        authorization: this._token
+      }
     })
       .then(this._checkResponse);
   }
 
   getCards() {
     return fetch(`${this._url}/cards`, {
-      headers: { authorization: this._token }
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        // authorization: localStorage.getItem('jwt')
+        authorization: this._token
+      }
     })
       .then(this._checkResponse);
   }
@@ -30,6 +40,7 @@ class Api {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: {
+        // authorization: localStorage.getItem('jwt'),
         authorization: this._token,
         "Content-Type": "application/json"
       },
@@ -45,6 +56,7 @@ class Api {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
+        // authorization: localStorage.getItem('jwt'),
         authorization: this._token,
         "Content-Type": "application/json"
       },
@@ -59,6 +71,7 @@ class Api {
     return fetch(`${this._url}/cards`, {
       method: 'POST',
       headers: {
+        // authorization: localStorage.getItem('jwt'),
         authorization: this._token,
         "Content-Type": "application/json"
       },
@@ -73,7 +86,10 @@ class Api {
   deleteCard(id) {
     return fetch(`${this._url}/cards/${id}`, {
       method: 'DELETE',
-      headers: { authorization: this._token }
+      headers: { 
+        // authorization: localStorage.getItem('jwt') 
+        authorization: this._token
+      }
     })
       .then(this._checkResponse);
   }
@@ -82,6 +98,7 @@ class Api {
     return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'PUT',
       headers: {
+        // authorization: localStorage.getItem('jwt')
         authorization: this._token
       }
     })
@@ -92,6 +109,7 @@ class Api {
     return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'DELETE',
       headers: {
+        // authorization: localStorage.getItem('jwt')
         authorization: this._token
       }
     })

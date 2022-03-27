@@ -1,4 +1,4 @@
-import React from 'react';
+import { useContext, useState, useEffect } from 'react';
 import PopupWithForm from './PopupWithForm';
 import Input from './Input';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
@@ -10,9 +10,9 @@ export default function EditProfilePopup(props) {
     onUpdateUser
   } = props;
 
-  const currentUser = React.useContext(CurrentUserContext);
-  const [profileName, setProfileName] = React.useState('');
-  const [profileJob, setProfileJob] = React.useState('');
+  const currentUser = useContext(CurrentUserContext);
+  const [profileName, setProfileName] = useState('');
+  const [profileJob, setProfileJob] = useState('');
 
   function handleProfileNameChange(event) {
     setProfileName(event.target.value);
@@ -30,7 +30,7 @@ export default function EditProfilePopup(props) {
     });
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     setProfileName(currentUser.name || '');
     setProfileJob(currentUser.about || '');
   }, [currentUser]);
@@ -46,7 +46,7 @@ export default function EditProfilePopup(props) {
     >
       <Input
         inputName="profile_name"
-        type="name" 
+        type="name"
         value={profileName}
         placeholder="Full name"
         onChange={handleProfileNameChange}

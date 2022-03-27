@@ -1,4 +1,4 @@
-import React from "react";
+import { useRef } from "react";
 import PopupWithForm from './PopupWithForm';
 
 export default function EditAvatarPopup(props) {
@@ -7,14 +7,13 @@ export default function EditAvatarPopup(props) {
     onClose,
     onUpdateAvatar
   } = props;
-  const avatarLinkRef = React.useRef();
+  const avatarLinkRef = useRef();
 
   function handleSubmit(event) {
     event.preventDefault();
     onUpdateAvatar({
       avatar: avatarLinkRef.current.value
     });
-    event.target.reset();
   }
 
   return (

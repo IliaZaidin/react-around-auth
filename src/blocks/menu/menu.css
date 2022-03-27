@@ -1,0 +1,18 @@
+.menu {
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom: 1px solid #545454;
+  display: none;
+  /* opacity: 0;
+  transition: opacity 0.7s linear, visibility 0s linear 0.8s; */
+}
+
+.menu_is_opened {
+  display: flex;
+  /* opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+  pointer-events: auto; */
+}

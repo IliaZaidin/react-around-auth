@@ -1,4 +1,4 @@
-import React from 'react';
+import { useContext } from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Card(props) {
@@ -9,7 +9,7 @@ function Card(props) {
     onCardLike,
     onCardDeleteClick
   } = props;
-  const currentUser = React.useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext);
 
   const isOwnCard = card.owner._id === currentUser._id;
   const trashButtonClassName = isOwnCard ? "picture-grid__delete" : "picture-grid__delete picture-grid__delete_disabled";

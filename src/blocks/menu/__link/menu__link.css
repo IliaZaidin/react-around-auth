@@ -1,0 +1,10 @@
+.menu__link{
+  margin: 0 auto 40px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  color: #A9A9A9;
+  text-decoration: none;
+}
