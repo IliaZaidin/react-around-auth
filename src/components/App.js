@@ -68,6 +68,16 @@ export default function App() {
       });
   }, [])
 
+  useEffect(() => {
+    const closeByEscape = (e) => {
+      if (e.key === 'Escape') {
+        closeAllPopups();
+      }
+    };
+    document.addEventListener('keydown', closeByEscape);
+    return () => document.removeEventListener('keydown', closeByEscape);
+  }, [])
+
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true);
   }
@@ -105,22 +115,26 @@ export default function App() {
     api.editProfile(inputData.name, inputData.about)
       .then(data => {
         setCurrentUser(data);
-        closeAllPopups();
       })
       .catch((err) => {
         console.log("Error: ", err.status, err.statusText);
-      });
+      })
+      .finally(
+        closeAllPopups()
+      );
   }
 
   function handleUpdateAvatar(inputData) {
     api.updateProfilePicture(inputData.avatar)
       .then(data => {
         setCurrentUser(data);
-        closeAllPopups();
       })
       .catch((err) => {
         console.log("Error: ", err.status, err.statusText);
-      });
+      })
+      .finally(
+        closeAllPopups()
+      );
   }
 
   function toggleLike(card) {
@@ -159,23 +173,26 @@ export default function App() {
         setCards(cards =>
           cards.filter(element =>
             element._id !== cardToDelete._id)
-        ),
-        closeAllPopups()
-      )
+        ))
       .catch((err) => {
         console.log("Error: ", err.status, err.statusText);
-      });
+      })
+      .finally(
+        closeAllPopups()
+      );
   }
 
   function handleAddPlaceSubmit(cardData) {
     api.addCard(cardData.name, cardData.link)
       .then(newCard =>
         setCards([newCard, ...cards]),
-        closeAllPopups()
       )
       .catch((err) => {
         console.log("Error: ", err.status, err.statusText);
-      });
+      })
+      .finally(
+        closeAllPopups()
+      );
   }
 
   // Authentication functions
@@ -257,7 +274,7 @@ export default function App() {
             <Route path="/signup">
               <Register
                 email={email}
-                password={password} 
+                password={password}
                 handleRegister={handleRegister}
                 handleEmail={handleEmail}
                 handlePassword={handlePassword}
