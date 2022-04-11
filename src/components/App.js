@@ -116,12 +116,12 @@ export default function App() {
       .then(data => {
         setCurrentUser(data);
       })
+      .then(() => {
+        closeAllPopups();
+      })
       .catch((err) => {
         console.log("Error: ", err.status, err.statusText);
-      })
-      .finally(
-        closeAllPopups()
-      );
+      });
   }
 
   function handleUpdateAvatar(inputData) {
@@ -129,12 +129,12 @@ export default function App() {
       .then(data => {
         setCurrentUser(data);
       })
+      .then(() => {
+        closeAllPopups();
+      })
       .catch((err) => {
         console.log("Error: ", err.status, err.statusText);
-      })
-      .finally(
-        closeAllPopups()
-      );
+      });
   }
 
   function toggleLike(card) {
@@ -174,12 +174,12 @@ export default function App() {
           cards.filter(element =>
             element._id !== cardToDelete._id)
         ))
+      .then(() => {
+        closeAllPopups();
+      })
       .catch((err) => {
         console.log("Error: ", err.status, err.statusText);
-      })
-      .finally(
-        closeAllPopups()
-      );
+      });
   }
 
   function handleAddPlaceSubmit(cardData) {
@@ -187,12 +187,12 @@ export default function App() {
       .then(newCard =>
         setCards([newCard, ...cards]),
       )
+      .then(() => {
+        closeAllPopups();
+      })
       .catch((err) => {
         console.log("Error: ", err.status, err.statusText);
-      })
-      .finally(
-        closeAllPopups()
-      );
+      });
   }
 
   // Authentication functions
