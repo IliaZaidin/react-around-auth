@@ -1,7 +1,6 @@
 class Api {
   constructor(options) {
     this._url = options.baseUrl;
-    this._token = options.token;
   }
 
   _checkResponse(res) {
@@ -17,8 +16,7 @@ class Api {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
-        // "authorization": localStorage.getItem('jwt')
-        authorization: this._token
+        "authorization": `Bearer ${localStorage.getItem('jwt')}`
       }
     })
       .then(this._checkResponse);
@@ -29,8 +27,7 @@ class Api {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
-        // authorization: localStorage.getItem('jwt')
-        authorization: this._token
+        authorization: `Bearer ${localStorage.getItem('jwt')}`
       }
     })
       .then(this._checkResponse);
@@ -40,8 +37,7 @@ class Api {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: {
-        // authorization: localStorage.getItem('jwt'),
-        authorization: this._token,
+        authorization: `Bearer ${localStorage.getItem('jwt')}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
@@ -56,8 +52,7 @@ class Api {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
-        // authorization: localStorage.getItem('jwt'),
-        authorization: this._token,
+        authorization: `Bearer ${localStorage.getItem('jwt')}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
@@ -71,8 +66,7 @@ class Api {
     return fetch(`${this._url}/cards`, {
       method: 'POST',
       headers: {
-        // authorization: localStorage.getItem('jwt'),
-        authorization: this._token,
+        authorization: `Bearer ${localStorage.getItem('jwt')}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
@@ -87,8 +81,7 @@ class Api {
     return fetch(`${this._url}/cards/${id}`, {
       method: 'DELETE',
       headers: { 
-        // authorization: localStorage.getItem('jwt') 
-        authorization: this._token
+        authorization: `Bearer ${localStorage.getItem('jwt')}` 
       }
     })
       .then(this._checkResponse);
@@ -98,8 +91,7 @@ class Api {
     return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'PUT',
       headers: {
-        // authorization: localStorage.getItem('jwt')
-        authorization: this._token
+        authorization: `Bearer ${localStorage.getItem('jwt')}`
       }
     })
       .then(this._checkResponse);
@@ -109,8 +101,7 @@ class Api {
     return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'DELETE',
       headers: {
-        // authorization: localStorage.getItem('jwt')
-        authorization: this._token
+        authorization: `Bearer ${localStorage.getItem('jwt')}`
       }
     })
       .then(this._checkResponse);
@@ -119,7 +110,6 @@ class Api {
 
 const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/group-12",
-  token: "3818518a-0f00-4af2-b13c-93949a3b17de"
 });
 
 export default api;
