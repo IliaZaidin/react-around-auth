@@ -54,7 +54,7 @@ class Auth {
 
 const auth = new Auth({
   // baseUrl: "https://register.nomoreparties.co"
-  baseUrl: "https://api.ilia.students.nomoreparties.sbs"
+  baseUrl: "ilia.students.nomoreparties.sbs"
 });
 
 export default auth;

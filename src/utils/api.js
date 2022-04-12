@@ -110,7 +110,7 @@ class Api {
 
 const api = new Api({
   // baseUrl: "https://around.nomoreparties.co/v1/group-12",
-  baseUrl: "https://api.ilia.students.nomoreparties.sbs"
+  baseUrl: "ilia.students.nomoreparties.sbs"
 });
 
 export default api;
