@@ -11,10 +11,10 @@ function Card(props) {
   } = props;
   const currentUser = useContext(CurrentUserContext);
 
-  const isOwnCard = card.owner._id === currentUser._id;
+  const isOwnCard = (card.owner === currentUser._id);
   const trashButtonClassName = isOwnCard ? "picture-grid__delete" : "picture-grid__delete picture-grid__delete_disabled";
 
-  const isLikedByOwner = card.likes.some(element => element._id === currentUser._id);
+  const isLikedByOwner = card.likes.some(element => element.toString() === currentUser._id);
   const likeButtonClassName = isLikedByOwner ? "picture-grid__like picture-grid__like_active" : "picture-grid__like";
 
   const passDataToPopup = () => {

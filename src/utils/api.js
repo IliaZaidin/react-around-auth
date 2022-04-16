@@ -27,7 +27,7 @@ class Api {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem('jwt')}`
+        "authorization": `Bearer ${localStorage.getItem('jwt')}`
       }
     })
       .then(this._checkResponse);
@@ -37,8 +37,8 @@ class Api {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: {
-        authorization: `Bearer ${localStorage.getItem('jwt')}`,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "authorization": `Bearer ${localStorage.getItem('jwt')}`,
       },
       body: JSON.stringify({
         name: name,
@@ -52,8 +52,8 @@ class Api {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
-        authorization: `Bearer ${localStorage.getItem('jwt')}`,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "authorization": `Bearer ${localStorage.getItem('jwt')}`,
       },
       body: JSON.stringify({
         avatar: link
@@ -66,8 +66,8 @@ class Api {
     return fetch(`${this._url}/cards`, {
       method: 'POST',
       headers: {
-        authorization: `Bearer ${localStorage.getItem('jwt')}`,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "authorization": `Bearer ${localStorage.getItem('jwt')}`,
       },
       body: JSON.stringify({
         name: name,
@@ -80,8 +80,9 @@ class Api {
   deleteCard(id) {
     return fetch(`${this._url}/cards/${id}`, {
       method: 'DELETE',
-      headers: { 
-        authorization: `Bearer ${localStorage.getItem('jwt')}` 
+      headers: {
+        "Content-Type": "application/json",
+        "authorization": `Bearer ${localStorage.getItem('jwt')}`,
       }
     })
       .then(this._checkResponse);
@@ -91,17 +92,19 @@ class Api {
     return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'PUT',
       headers: {
-        authorization: `Bearer ${localStorage.getItem('jwt')}`
+        "Content-Type": "application/json",
+        "authorization": `Bearer ${localStorage.getItem('jwt')}`,
       }
     })
       .then(this._checkResponse);
   }
 
-  dislike(id) {
+  unlike(id) {
     return fetch(`${this._url}/cards/likes/${id}`, {
       method: 'DELETE',
       headers: {
-        authorization: `Bearer ${localStorage.getItem('jwt')}`
+        "Content-Type": "application/json",
+        "authorization": `Bearer ${localStorage.getItem('jwt')}`,
       }
     })
       .then(this._checkResponse);
@@ -109,8 +112,8 @@ class Api {
 }
 
 const api = new Api({
-  // baseUrl: "https://around.nomoreparties.co/v1/group-12",
   baseUrl: "ilia.students.nomoreparties.sbs"
+  // baseUrl: "http://localhost:3000"
 });
 
 export default api;

@@ -13,48 +13,41 @@ class Auth {
   }
 
   register(email, password) {
-    return fetch(`${this._baseUrl}/signup`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        password: password,
-        email: email
-      }),
-    })
+    return fetch(
+      `${this._baseUrl}/signup`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          password: password,
+          email: email
+        }),
+      })
       .then(this._checkResponse)
   };
 
   login(email, password) {
-    return fetch(`${this._baseUrl}/signin`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        password: password,
-        email: email
-      }),
-    })
-      .then(this._checkResponse)
-  };
-
-  checkToken() {
-    return fetch(`${this._baseUrl}/users/me`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "authorization": `Bearer ${localStorage.getItem('jwt')}`
-      },
-    })
+    return fetch(
+      `${this._baseUrl}/signin`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          password: password,
+          email: email
+        }),
+      })
       .then(this._checkResponse)
   };
 }
 
 const auth = new Auth({
-  // baseUrl: "https://register.nomoreparties.co"
   baseUrl: "ilia.students.nomoreparties.sbs"
+  // baseUrl: "http://localhost:3000"
 });
 
 export default auth;
